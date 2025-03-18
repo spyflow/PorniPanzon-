@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PorniPanzon - Videos para adultos</title>
+  <meta name="description" content="Sitio de parodia humorística sin contenido real para adultos. Protagonizado por Maikelterra.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23ff338f'/%3E%3Cpath d='M30 35 L70 35 L70 70 L30 70 Z' fill='%238833ff'/%3E%3Ctext x='50' y='55' font-family='Arial' font-weight='bold' font-size='20' text-anchor='middle' fill='white'%3EPP%3C/text%3E%3C/svg%3E">
+  <meta property="og:title" content="PorniPanzon - Sitio de parodia">
+  <meta property="og:description" content="Sitio de parodia humorística sin contenido real para adultos. Protagonizado por Maikelterra.">
+  <meta property="og:type" content="website">
+  <style>
+    :root {
+      --primary-color: #ff338f;
+      --secondary-color: #8833ff;
+      --background-color: #1a1a1a;
+      --card-background: #2a2a2a;
+      --text-color: #f5f5f5;
+      --text-secondary: #cccccc;
+      --border-radius: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .logo-container h1 {
+      font-size: 2.5rem;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      50% {
+        text-shadow: 2px 2px 10px rgba(255, 51, 143, 0.8);
+      }
+      100% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .slogan {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: rgba(255, 255, 255, 0.7);
+      transform: translateY(-3px);
+    }
+
+    nav a.active {
+      border-bottom: 3px solid white;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-bar input {
+      padding: 0.5rem;
+      border: none;
+      border-radius: var(--border-radius);
+      width: 250px;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar input:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--primary-color);
+    }
+
+    .search-bar button {
+      background: white;
+      border: none;
+      padding: 0.5rem;
+      margin-left: 0.5rem;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar button:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section h2 {
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      position: relative;
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .video-card {
+      background-color: var(--card-background);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(255, 51, 143, 0.3);
+    }
+
+    .video-card:hover .thumbnail::before {
+      opacity: 1;
+    }
+
+    .thumbnail {
+      position: relative;
+      height: 150px;
+      background-color: #444;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .thumbnail::before {
+      content: '⯈';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      color: white;
+      background-color: rgba(255, 51, 143, 0.8);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .placeholder-thumbnail {
+      background: linear-gradient(45deg, #3a3a3a, #555);
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .placeholder-thumbnail span {
+      background-color: rgba(255, 51, 143, 0.8);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1;
+    }
+
+    .video-card h3 {
+      padding: 0.8rem;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .video-card:hover h3 {
+      color: var(--primary-color);
+    }
+
+    .video-info {
+      padding: 0 0.8rem 0.8rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .category-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .category-tag {
+      background-color: var(--card-background);
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .category-tag:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 3px 8px rgba(255, 51, 143, 0.3);
+    }
+
+    .stars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .star-card {
+      background-color: var(--card-background);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .star-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(255, 51, 143, 0.3);
+    }
+
+    .star-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .star-card:hover .star-avatar {
+      transform: scale(1.1);
+    }
+
+    .placeholder-avatar {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    }
+
+    .star-card h3 {
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .star-card:hover h3 {
+      color: var(--primary-color);
+    }
+
+    .star-card p {
+      color: var(--text-secondary);
+    }
+
+    footer {
+      background-color: #222;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-section h4 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-section h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--primary-color);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-section a:hover {
+      color: var(--primary-color);
+      transform: translateX(5px);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #333;
+      color: var(--text-secondary);
+    }
+
+    .disclaimer-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .disclaimer-content {
+      background-color: #2a2a2a;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .disclaimer-content h3 {
+      color: #ff338f;
+      margin-bottom: 1rem;
+    }
+
+    .disclaimer-content button {
+      background: linear-gradient(to right, #ff338f, #8833ff);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 20px;
+      margin-top: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .disclaimer-content button:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      nav ul {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .search-bar {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .search-bar input {
+        width: 100%;
+      }
+
+      .video-grid, .stars-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <h1>PorniPanzon</h1>
+      <p class="slogan">El único lugar donde Maikelterra es la estrella</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Inicio</a></li>
+        <li><a href="#">Categorías</a></li>
+        <li><a href="#">Estrellas</a></li>
+        <li><a href="#">Premium</a></li>
+      </ul>
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar videos...">
+        <button>🔍</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="featured">
+      <h2>Videos destacados</h2>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="thumbnail placeholder-thumbnail">
+            <span>18+</span>
+          </div>
+          <h3>Maikelterra en acción salvaje</h3>
+          <p class="video-info">32:45 • 1.2M vistas</p>
+        </div>
+        <div class="video-card">
+          <div class="thumbnail placeholder-thumbnail">
+            <span>18+</span>
+          </div>
+          <h3>La doble sorpresa de Maikelterra</h3>
+          <p class="video-info">28:12 • 852K vistas</p>
+        </div>
+        <div class="video-card">
+          <div class="thumbnail placeholder-thumbnail">
+            <span>18+</span>
+          </div>
+          <h3>Maikelterra encuentra un nuevo compañero</h3>
+          <p class="video-info">41:05 • 2.3M vistas</p>
+        </div>
+        <div class="video-card">
+          <div class="thumbnail placeholder-thumbnail">
+            <span>18+</span>
+          </div>
+          <h3>El secreto de Maikelterra revelado</h3>
+          <p class="video-info">26:38 • 1.8M vistas</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories">
+      <h2>Categorías populares</h2>
+      <div class="category-list">
+        <a href="#" class="category-tag">Amateur</a>
+        <a href="#" class="category-tag">Duos</a>
+        <a href="#" class="category-tag">Comedia</a>
+        <a href="#" class="category-tag">Celebridades</a>
+        <a href="#" class="category-tag">Exclusivos</a>
+        <a href="#" class="category-tag">Parodias</a>
+        <a href="#" class="category-tag">Trending</a>
+      </div>
+    </section>
+
+    <section class="trending">
+      <h2>Tendencias</h2>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="thumbnail placeholder-thumbnail">
+            <span>18+</span>
+          </div>
+          <h3>La primera vez de Maikelterra en cámara</h3>
+          <p class="video-info">35:22 • 4.5M vistas</p>
+        </div>
+        <div class="video-card">
+          <div class="thumbnail placeholder-thumbnail">
+            <span>18+</span>
+          </div>
+          <h3>Maikelterra y el misterioso admirador</h3>
+          <p class="video-info">29:48 • 1.9M vistas</p>
+        </div>
+        <div class="video-card">
+          <div class="thumbnail placeholder-thumbnail">
+            <span>18+</span>
+          </div>
+          <h3>Detrás de cámaras con Maikelterra</h3>
+          <p class="video-info">42:11 • 3.2M vistas</p>
+        </div>
+        <div class="video-card">
+          <div class="thumbnail placeholder-thumbnail">
+            <span>18+</span>
+          </div>
+          <h3>Maikelterra: La entrevista prohibida</h3>
+          <p class="video-info">33:05 • 2.7M vistas</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stars">
+      <h2>Estrellas del sitio</h2>
+      <div class="stars-grid">
+        <div class="star-card">
+          <div class="star-avatar placeholder-avatar"></div>
+          <h3>Maikelterra</h3>
+          <p>Estrella principal</p>
+        </div>
+        <div class="star-card">
+          <div class="star-avatar placeholder-avatar"></div>
+          <h3>El Misterioso</h3>
+          <p>Co-estrella</p>
+        </div>
+        <div class="star-card">
+          <div class="star-avatar placeholder-avatar"></div>
+          <h3>Anónimo 3</h3>
+          <p>Nuevo talento</p>
+        </div>
+        <div class="star-card">
+          <div class="star-avatar placeholder-avatar"></div>
+          <h3>Anónimo 4</h3>
+          <p>Actor de reparto</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>PorniPanzon</h4>
+        <p>Sitio de parodia - Solo para fines de humor</p>
+        <p>No contiene contenido real para adultos</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="#">Términos de servicio</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Descargo de responsabilidad</h4>
+        <p>Este sitio es una parodia y no contiene material real para adultos.</p>
+        <p>Creado solo con fines humorísticos.</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 PorniPanzon - Sitio de parodia</p>
+    </div>
+  </footer>
+
+  <div id="disclaimer" class="disclaimer-popup">
+    <div class="disclaimer-content">
+      <h3>Advertencia</h3>
+      <p>Este es un sitio de parodia y humor.</p>
+      <p>No contiene ningún material para adultos real.</p>
+      <button id="disclaimer-btn">Entendido</button>
+    </div>
+  </div>
+
+  <script>
+    // Disclaimer handling
+    document.getElementById('disclaimer-btn').addEventListener('click', function() {
+      document.getElementById('disclaimer').style.display = 'none';
+    });
+
+    // Video cards click handling
+    const videoCards = document.querySelectorAll('.video-card');
+    videoCards.forEach(card => {
+      card.addEventListener('click', function() {
+        const videoTitle = this.querySelector('h3').textContent;
+        alert(`"${videoTitle}" - Este es un sitio de parodia, no hay videos reales.`);
+      });
+    });
+
+    // Category tags click handling
+    const categoryTags = document.querySelectorAll('.category-tag');
+    categoryTags.forEach(tag => {
+      tag.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Esta es una categoría de parodia, sin contenido real.');
+      });
+    });
+
+    // Star cards click handling
+    const starCards = document.querySelectorAll('.star-card');
+    starCards.forEach(card => {
+      card.addEventListener('click', function() {
+        const starName = this.querySelector('h3').textContent;
+        alert(`"${starName}" - Este es un perfil de parodia, no hay contenido real.`);
+      });
+    });
+
+    // Search handling
+    const searchButton = document.querySelector('.search-bar button');
+    const searchInput = document.querySelector('.search-bar input');
+    searchButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      const searchTerm = searchInput.value.trim();
+      if (searchTerm) {
+        alert(`Búsqueda de "${searchTerm}" - Esta es una parodia y no hay resultados reales.`);
+        searchInput.value = '';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Austic Tech | Roadmap Cuántico</title>
+    <style>
+        /* Variables y Estilos Base */
+        :root {
+            --primary: #1C3F4D;
+            --secondary: #2E6275;
+            --accent: #FF5F6D;
+            --dark: #0A1920;
+            --light: #F4F7F6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.8;
+        }
+
+        /* Header */
+        .header {
+            background: var(--dark);
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--light);
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--light);
+            transform: skewY(-3deg);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Sección Detalles Técnicos */
+        .tech-details {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .tech-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .tech-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .tech-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 12px;
+        }
+
+        .spec-card {
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        /* Roadmap */
+        .roadmap {
+            background: var(--dark);
+            color: white;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .timeline {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 4rem;
+            overflow-x: auto;
+            padding-bottom: 2rem;
+        }
+
+        .milestone {
+            min-width: 300px;
+            padding: 2rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .milestone:hover {
+            transform: translateY(-10px);
+        }
+
+        .milestone::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -30px;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .year {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .tech-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .timeline {
+                flex-direction: column;
+            }
+
+            .milestone::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">AUSTIC</div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>El Futuro Cuántico Comienza Aquí</h1>
+        <p>2024-2030 | Plan Maestro de Innovación Disruptiva</p>
+    </section>
+
+    <div class="tech-details">
+        <!-- Neurointerfaces Cuánticas -->
+        <section class="tech-section">
+            <div class="tech-header">
+                <div class="tech-icon">🧠</div>
+                <h2>Neurointerfaces Cuánticas Híbridas</h2>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h3>Especificaciones Técnicas</h3>
+                    <ul>
+                        <li>Resolución neuronal: 0.1μV</li>
+                        <li>Latencia: 2ms</li>
+                        <li>Banda cuántica: 128 qbits</li>
+                    </ul>
+                </div>
+                <div class="spec-card">
+                    <h3>Aplicaciones Clave</h3>
+                    <ul>
+                        <li>Tratamiento de Alzheimer Fase III</li>
+                        <li>Entrenamiento militar táctico</li>
+                        <li>Síntesis de sueños controlados</li>
+                    </ul>
+                </div>
+                <div class="spec-card">
+                    <h3>Estado Actual</h3>
+                    <p>Fase de pruebas clínicas (Nivel 4/5 FDA)<br>
+                    Patente: PCT/AU2023/050321</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sistema de Energía PEDA -->
+        <section class="tech-section">
+            <div class="tech-header">
+                <div class="tech-icon">⚡</div>
+                <h2>Plataforma de Energía Digital Autónoma</h2>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h3>Parámetros Técnicos</h3>
+                    <ul>
+                        <li>Output: 500MW/m³</li>
+                        <li>Eficiencia: 98.7%</li>
+                        <li>Autonomía: ∞ (teórica)</li>
+                    </ul>
+                </div>
+                <div class="spec-card">
+                    <h3>Implementación</h3>
+                    <ul>
+                        <li>Primera ciudad piloto: Neo-Singapur 2026</li>
+                        <li>Alianza con CERN para nano-reactores</li>
+                        <li>Tecnología de confinamiento magnético 4.0</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Roadmap -->
+    <section class="roadmap">
+        <div class="timeline">
+            <div class="milestone">
+                <div class="year">2024-2025</div>
+                <h3>Fase Cuántica I</h3>
+                <ul>
+                    <li>Prototipo NQH 1.0 funcional</li>
+                    <li>Primera carga de ADN sintético</li>
+                    <li>Acuerdos con 5 gobiernos</li>
+                </ul>
+            </div>
+
+            <div class="milestone">
+                <div class="year">2026-2027</div>
+                <h3>Revolución Energética</h3>
+                <ul>
+                    <li>Primera ciudad 100% PEDA</li>
+                    <li>IA Aurora v3.2 operativa</li>
+                    <li>Salida a bolsa (NASDAQ: AUSTQ)</li>
+                </ul>
+            </div>
+
+            <div class="milestone">
+                <div class="year">2028-2030</div>
+                <h3>Convergencia Total</h3>
+                <ul>
+                    <li>Integración humano-NQH</li>
+                    <li>Colonias espaciales autónomas</li>
+                    <li>Red global de biocomputación</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2024 Austic Technologies Holdings Ltd.</p>
+        <p>NYSE: AUSTQ | ISIN: AU0000AUSTC9</p>
+        <p>Centros de I+D: Silicon Valley, CERN, Dubai Future District</p>
+    </footer>
+</body>
+</html>
